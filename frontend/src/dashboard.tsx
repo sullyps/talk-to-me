@@ -3,12 +3,14 @@ import { redirect } from 'react-router-dom';
 import './index.css';
 import { Camera, CameraProps } from 'react-camera-pro';
 import DashboardMode from './types/DashboardMode';
+import ParticleWrapper from './particleWrapper';
+import ParticleWrapperProps from './types/ParticleWrapperProps';
 
 // TODO: Move this?
 const sleep = async (time: number) =>
     new Promise((res => setTimeout(res, time)));
 
-function Dashboard() {
+function Dashboard(props: ParticleWrapperProps) {
   const [recordingBlob, setRecordingBlob] = useState<Blob | null>();
   const [videoAudioStream, setVideoAudioStream] =
     useState<MediaStream | null>();
@@ -207,13 +209,14 @@ function Dashboard() {
 
   // Base mode (not recording) of dashboard
   return (
-    <div ref={screenRef} className='absolute h-screen w-screen bg-black flex justify-around items-center flex-row gap-12'>
-        <div className='flex flex-col'>
+    <ParticleWrapper fadeStateController={props.fadeStateController}>
+    <div ref={screenRef} className='absolute h-screen w-screen flex justify-around items-center flex-row gap-12'>
+        <div className='flex flex-col animate__animated animate__fadeIn'>
             <h1 className='text-4xl text-white font-bold mb-52'>John Doe's Videos</h1>
             <h1 className='text-4xl font-bold text-white text-center'>No Videos Yet...</h1>
         </div>
 
-        <div className='flex flex-col space-y-48'>
+        <div className='flex flex-col space-y-48 animate__animated animate__fadeIn'>
             <h1 className='text-4xl text-white font-bold'>Your Videos</h1>
             <button
                 className='bg-slate-200 hover:bg-slate-300 rounded-lg py-4 text-center'
@@ -223,6 +226,7 @@ function Dashboard() {
             </button>
         </div>
     </div>
+    </ParticleWrapper>
   )
 }
 
