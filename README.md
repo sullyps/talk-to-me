@@ -2,7 +2,7 @@
 
 Hi, I'm Sully. This is one of my personal projects that I've done for my
 High School after graduating. The purpose of it is to provide a way for
-student pen pals in the Spanish class to send short form videos back
+student pen pals in world languages classes to send short form videos back
 and forth to each other with teacher moderation.
 
 ## Tech Stack
