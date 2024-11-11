@@ -1,3 +1,7 @@
+# General ignore
 .env
+
+# Sully specific ignore
 class-design.excalidraw
 tech-stack.excalidraw
+calendar.md
