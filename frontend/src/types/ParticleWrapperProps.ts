@@ -19,10 +19,12 @@ type ParticleWrapperProps = PropsWithChildren & {
         React.SetStateAction<ParticalFadeState>,
         React.Dispatch<ParticalFadeState>
     ],
+
     /**
      * The dynamic states used in the app that should be updated by
      * Child "useMemo"'s of the particle wrapper
      */
+    // deno-lint-ignore no-explicit-any
     dynamicState?: Array<React.SetStateAction<any>>;
 }
 

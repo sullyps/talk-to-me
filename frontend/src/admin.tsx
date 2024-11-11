@@ -1,37 +1,11 @@
 import { useState } from 'react';
-import AdminDisplayTab from "./types/AdminDisplayTab";
-import ParticleWrapper from './particleWrapper';
+import AdminDisplayTab from "./types/AdminDisplayTab.ts";
+import ParticleWrapper from './particleWrapper.tsx';
 import './index.css';
-import ParticleWrapperProps from './types/ParticleWrapperProps';
-import { Navigate } from 'react-router';
+import ParticleWrapperProps, { ParticalFadeState } from './types/ParticleWrapperProps.ts';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
-
-// Admin functionality
-// Buttons for "adding students", "removing students", "setting student names/passes"
-// Watch student video history
-// Contact Developer button?
-
-// TODO: Add sign-in to this page
-
-// Developer Note: Search for sections here with AdminDisplayTag enum
-
-/* ORIGINAL:
-    <div className='h-screen w-screen bg-black flex justify-center items-center flex-row gap-12'>
-      <h1
-        className='text-6xl underline text-blue-200 hover:text-blue-300 font-bold text-ceter align-middle cursor-pointer'
-        onClick={() => setCurrentDisplayTab(AdminDisplayTab.Students)}
-      >
-        {"<Students>"}
-      </h1>
-      <h1
-        className='text-6xl underline text-blue-200 hover:text-blue-300 font-bold text-ceter align-middle cursor-pointer'
-        onClick={() => setCurrentDisplayTab(AdminDisplayTab.Classes)}
-      >
-        {"<Classes>"}
-      </h1>
-      </div>
-*/
 
 function Admin(props: ParticleWrapperProps) {
   const [
@@ -49,6 +23,9 @@ function Admin(props: ParticleWrapperProps) {
           <div className='flex flex-row gap-48 text-5xl text-blue-200 font-bold'>
               <Link
                   to={"/admin/students"}
+                  onClick={() =>
+                    props.fadeStateController[1](ParticalFadeState.FadingOut)
+                  }
                   className='hover:text-blue-300 italic underline'
               >
               Students

@@ -4,7 +4,8 @@ import type { Engine } from "tsparticles-engine";
 import { loadSlim } from "@tsparticles/slim";
 import { loadStarsPreset } from "@tsparticles/preset-stars"
 import { useLocation } from "react-router";
-import ParticleWrapperProps, { ParticalFadeState } from "./types/ParticleWrapperProps";
+import ParticleWrapperProps, { ParticalFadeState } from "./types/ParticleWrapperProps.ts";
+import React from "react";
 
 // NOTE: This is based off a hook version of the example
 // implementation at https://github.com/tsparticles/tsparticles
@@ -84,10 +85,14 @@ const ParticleWrapper = (props: ParticleWrapperProps) => {
         <div />
         }
     </div>
-    // TODO: Redesign this?
+    // TODO: Redesign this? -> Currently counterintuitive
     // If children have dynamic state that needs to be re-rendered,
     // do that here
-  ), [particlesLoaded, (props.dynamicState ?? props.dynamicState)]);
+  ), [
+    particlesLoaded,
+    props.fadeStateController[0],
+    (props.dynamicState ?? props.dynamicState)]
+  );
 }
 
 export default ParticleWrapper;

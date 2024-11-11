@@ -7,6 +7,10 @@ import ParticlesContainer from './particleWrapper.tsx';
 import React, { useState } from 'react';
 import { ParticalFadeState } from './types/ParticleWrapperProps.ts';
 import Students from './students.tsx';
+import Classes from './classes.tsx';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import LoginGoogle from './loginGoogle.tsx';
+
 
 //backgroundFadeOut top level state here?
 
@@ -23,10 +27,11 @@ function App() {
           <Routes>
               <Route path='/' element={<Login fadeStateController={fadeStateController} />} />
               <Route path='login' element={<Login fadeStateController={fadeStateController} />} />
+              <Route path='loginGoogle' element={<LoginGoogle fadeStateController={fadeStateController} />} />
               <Route path='dashboard' element={<Dashboard fadeStateController={fadeStateController} />} />
-              <Route path='admin' element={<Admin fadeStateController={fadeStateController} />}>
-                  <Route path='students' element={<Students fadeStateController={fadeStateController} />} />
-              </Route>
+              <Route path='admin' element={<Admin fadeStateController={fadeStateController} />} />
+              <Route path='admin/students' element={<Students fadeStateController={fadeStateController} />} />
+              <Route path='classes' element={<Classes fadeStateController={fadeStateController} />} />
               <Route path='particlesTest' element={<ParticlesContainer fadeStateController={fadeStateController} />} />
           </Routes>
       </BrowserRouter>
@@ -34,6 +39,7 @@ function App() {
 }
 
 
+//@ts-ignore (supresses document possibly not existing)
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />

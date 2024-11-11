@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
 import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import './index.css';
-import ParticleWrapper from './particleWrapper';
-import ParticleWrapperProps, { ParticalFadeState } from './types/ParticleWrapperProps';
+import ParticleWrapper from './particleWrapper.tsx';
+import ParticleWrapperProps, { ParticalFadeState } from './types/ParticleWrapperProps.ts';
+import React from 'react';
 
 
 function Login(props: ParticleWrapperProps) {
