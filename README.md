@@ -13,7 +13,7 @@ The frontend of this application is made with [React.JS](https://react.dev/)
 (See [/frontend/src](./frontend/src/))
 **DEVELOPER NOTE:** I am planning to migrate to [Next.JS](https://nextjs.org/), a React framework created by Vercel
 
-## TODO
+## README TODO
 - [ ] Add screenshots to README
 - [ ] Elaborate on the features of the app further in development
 - [ ] Make a section for the backend in the README as well as the frontend
