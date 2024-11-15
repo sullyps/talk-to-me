@@ -11,14 +11,28 @@ import axios from "axios";
 
 // TODO: Move this somewhere better
 const GOOGLE_CLIENT_ID = "849272429801-oniuepolebt3j7o369mlh5q6fcu2mk45.apps.googleusercontent.com";
-const BACKEND_URL = "http://localhost:8080/api/auth";
+const BACKEND_URI = "http://localhost:8000";
 
-async function authenticate(credentials: CredentialResponse) {
-
-}
 
 function LoginGoogle(props: ParticleWrapperProps) {
-    const [isAuthenticating, setIsAuthenticating] = useState(false);
+    async function authenticate(credentials: CredentialResponse) {
+        const response = await axios.post(BACKEND_URI + "/api/auth", {
+            credentials
+        });
+
+        localStorage.setItem("apiKey", response.data.apiKey);
+    }
+
+    async function authenticateWithKey() {
+        const response = await axios.post(BACKEND_URI + "/api/auth", {
+            key: localStorage.apiKey
+        });
+    }
+
+    if (localStorage.apiKey) {
+        authenticateWithKey()
+        return <div />
+    }
 
     return (
         <GoogleOAuthProvider
@@ -34,9 +48,7 @@ function LoginGoogle(props: ParticleWrapperProps) {
                     </div>
 
                     <GoogleLogin
-                        onSuccess={credentialResponse => {
-                            console.log(credentialResponse);
-                        }}
+                        onSuccess={authenticate}
                         onError={() => {
                             console.log('Login Failed');
                         }}

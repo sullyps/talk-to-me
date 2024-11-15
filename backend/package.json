@@ -1,5 +1,14 @@
 {
     "scripts": {
-        "dev": "deno run --allow-read --allow-env --allow-net index.ts"
+        "dev": "deno run --allow-read --allow-env --allow-net server.ts"
+    },
+    "dependencies": {
+        "@types/axios": "^0.14.4",
+        "@types/express": "^5.0.0",
+        "axios": "^1.7.7",
+        "cors": "^2.8.5",
+        "googleapis": "^144.0.0",
+        "mongodb": "^6.10.0",
+        "uuid": "^11.0.3"
     }
 }
